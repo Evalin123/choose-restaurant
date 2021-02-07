@@ -230,7 +230,7 @@ const Signup = () => {
             </AlertDialogBody>
             <AlertDialogFooter>
               <Button
-                colorScheme="blackAlpha"
+                colorScheme="#131313;"
                 ref={cancelRef}
                 onClick={() => {
                   onClose();
