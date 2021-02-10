@@ -14,14 +14,17 @@ const StyledSidebar = styled.div`
   flex-direction: column;
 
   Button {
-    width: 129px;
-    height: 23px;
-    left: 42px;
-    margin-top: 90px;
+    width: 300px;
+    height: 67px;
+    margin-top: 50px;
     font-family: Roboto;
     font-size: 20px;
     line-height: 23px;
     color: #FFFFFF;
+    border: none;
+  }
+  Button.first-btn {
+    margin-top: 55px;
   }
 `
 
@@ -30,22 +33,41 @@ const Sidebar = () => {
 
   return (
     <StyledSidebar>
-      <Button variant="ghost" onClick={() => { history.push("/signup") }}>
+      <Button
+        className="first-btn"
+        variant="unstyled"
+        onClick={() => { history.push("/signup") }}
+        _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
+      >
         會員登入/註冊
       </Button>
-      <Button variant="ghost">
+      <Button
+        variant="unstyled"
+        _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
+        onClick={() => { history.push("/restaurantList") }}
+      >
         造訪過的餐廳
       </Button>
-      <Button variant="ghost">
+      <Button
+        variant="unstyled"
+        _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
+      >
         未解鎖的餐廳
       </Button>
-      <Button variant="ghost">
+      <Button
+        variant="unstyled"
+        _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
+      >
         黑名單餐廳
       </Button>
-      <Button variant="ghost">
+      <Button
+        variant="unstyled"
+        _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
+        onClick={() => { history.push("/about") }}
+      >
         關於今天吃什麼
       </Button>
-      <Button variant="ghost">
+      <Button variant="unstyled" _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}>
         登出
       </Button>
     </StyledSidebar>

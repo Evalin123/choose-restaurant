@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import Sidebar from "../components/common/Sidebar";
-
 const StyledRestaurantList = styled.div`
+  width: 100%;
+  height: 100%
   display: flex;
   flex-direction: row;
 
@@ -17,17 +17,14 @@ const StyledRestaurantList = styled.div`
 
 const RestaurantList = () => {
   return (
-    <div>
-      <StyledRestaurantList>
-        <Sidebar />
-        <div className="restaurant-list">
-          <p>餐廳名稱</p>
-          <p>餐廳名稱</p>
-          <p>餐廳名稱</p>
-          <p>餐廳名稱</p>
-        </div>
-      </StyledRestaurantList>
-    </div>
+    <StyledRestaurantList>
+      <div className="restaurant-list">
+        <p>餐廳名稱</p>
+        <p>餐廳名稱</p>
+        <p>餐廳名稱</p>
+        <p>餐廳名稱</p>
+      </div>
+    </StyledRestaurantList>
   )
 }
 

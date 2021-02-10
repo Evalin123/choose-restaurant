@@ -44,7 +44,7 @@ const StyledSignup = styled.div`
     font-size: 25px;
     line-height: 29px;
     letter-spacing: 0.2em;
-    color: #131313;
+    color: #CC7B4E;
   }
   .sign-btn.sign-up {
     color: #BABABA;
@@ -63,7 +63,8 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
-    color: #BABABA;
+    background: #E5E5E5;
+    border-radius: 5px; 
   }
 
   .email-input {
@@ -73,13 +74,16 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
-    color: #BABABA;
+    background: #E5E5E5;
+    border-radius: 5px;
   }
 
   .psd-input-group {
     width: 401px;
     height: 69px;
     margin-top: 34px;
+    background: #E5E5E5;
+    border-radius: 5px;
   }
   .psd-input-group input {
     width: 100%;
@@ -87,7 +91,6 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
-    color: #BABABA;
   }
   .psd-eyes-btn {
     top: 13px;
@@ -97,7 +100,7 @@ const StyledSignup = styled.div`
     width: 104px;
     height: 62px;
     margin-top: 137px;
-    background-color: #131313;
+    background-color: #CC7B4E;
     border-radius: 5px;
     font-family: Roboto;
     font-size: 20px;
@@ -118,7 +121,8 @@ const Signin = () => {
           <Button
             className="sign-btn"
             colorScheme="teal"
-            variant="ghost"
+            variant="unstyled"
+            _focus={{ border: 'none' }}
             onClick={() => { history.push("/signin") }}
           >
             會員登入
@@ -127,22 +131,24 @@ const Signin = () => {
           <Button
             className="sign-btn sign-up"
             colorScheme="teal"
-            variant="ghost"
+            variant="unstyled"
             onClick={() => { history.push("/signup") }}
           >
             會員註冊
           </Button>
         </div>
-        <Input className="account-input" placeholder="帳號" />
+        <Input className="account-input" focusBorderColor="#6B6B6B" placeholder="帳號" />
         <InputGroup className="psd-input-group">
           <Input
             type={show ? "text" : "password"}
             placeholder="密碼"
+            focusBorderColor="#6B6B6B"
+            _active={{ borderBottomColor: "#FF9B63" }}
           />
           <InputRightElement className="psd-eyes-btn" width="3rem">
             <IconButton
               h="1.75rem"
-              variant="ghost"
+              variant="unstyled"
               onClick={handleClick}
               icon={
                 show ? (
@@ -157,7 +163,7 @@ const Signin = () => {
         <Button
           className="submit-btn"
           colorScheme="teal"
-          variant="ghost"
+          variant="unstyled"
           onClick={() => { history.push("/") }}
         >
           註冊

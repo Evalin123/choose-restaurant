@@ -69,7 +69,6 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
-    color: #BABABA;
   }
 
   .email-input {
@@ -79,7 +78,6 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
-    color: #BABABA;
   }
 
   .psd-input-group {
@@ -93,7 +91,6 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
-    color: #BABABA;
   }
   .psd-eyes-btn {
     top: 13px;
@@ -166,10 +163,11 @@ const Signup = () => {
             會員註冊
           </Button>
         </div>
-        <Input className="account-input" placeholder="帳號" />
-        <Input className="email-input" placeholder="電子信箱" />
+        <Input className="account-input" focusBorderColor="#6B6B6B" placeholder="帳號" />
+        <Input className="email-input" focusBorderColor="#6B6B6B" placeholder="電子信箱" />
         <InputGroup className="psd-input-group">
           <Input
+            focusBorderColor="#6B6B6B"
             type={show ? "text" : "password"}
             placeholder="密碼"
           />

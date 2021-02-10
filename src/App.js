@@ -7,8 +7,9 @@ import Signup from "./pages/SignupPage";
 import Signin from "./pages/SigninPage";
 import HomePage from "./pages/HomePage";
 import RestaurantPage from "./pages/RestaurantPage";
-import RestaurantDetailPage from "./pages/RestaurantDetailPage";
+import AfterRestaurantPage from "./pages/AfterRestaurantPage";
 import RestaurantList from "./pages/RestaurantList";
+import AboutPage from "./pages/AboutPage";
 
 export default function App() {
   return (
@@ -29,11 +30,14 @@ export default function App() {
             <Route path="/restaurant/:id" exact>
               <RestaurantPage />
             </Route>
-            <Route path="/restaurant/:id/detail" exact>
-              <RestaurantDetailPage />
+            <Route path="/restaurant/:id/after" exact>
+              <AfterRestaurantPage />
             </Route>
             <Route path="/restaurantList" exact>
               <RestaurantList />
+            </Route>
+            <Route path="/about">
+              <AboutPage />
             </Route>
           </Switch>
         </BrowserRouter>
