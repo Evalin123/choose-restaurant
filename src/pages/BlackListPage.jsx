@@ -46,11 +46,11 @@ const StyledRestaurantList = styled.div`
   }
 `
 
-const RestaurantList = () => {
+const BlackListPage = () => {
   return (
     <StyledRestaurantList>
-      <h2 align="left">會再二訪</h2>
-      <p align="left" className="description">下次還有機會抽到！</p>
+      <h2 align="left">黑名單</h2>
+      <p align="left" className="description">此生不會再見到</p>
       <div align="left" className="restaurant-list">
         <RestaurantListModel />
         <RestaurantListModel />
@@ -69,4 +69,4 @@ const RestaurantList = () => {
   )
 }
 
-export default RestaurantList
+export default BlackListPage

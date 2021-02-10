@@ -10,6 +10,8 @@ import RestaurantPage from "./pages/RestaurantPage";
 import AfterRestaurantPage from "./pages/AfterRestaurantPage";
 import RestaurantList from "./pages/RestaurantList";
 import AboutPage from "./pages/AboutPage";
+import BlackListPage from "./pages/BlackListPage";
+import LockedPage from "./pages/LockedPage";
 
 export default function App() {
   return (
@@ -38,6 +40,12 @@ export default function App() {
             </Route>
             <Route path="/about">
               <AboutPage />
+            </Route>
+            <Route path="/blackList">
+              <BlackListPage />
+            </Route>
+            <Route path="/lockedPage">
+              <LockedPage />
             </Route>
           </Switch>
         </BrowserRouter>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import RestaurantListModel from "../components/overlays/RestaurantListModel";
+import LockedListModel from "../components/overlays/LockedListModel";
 
 const StyledRestaurantList = styled.div`
   width: 100%;
@@ -46,27 +46,27 @@ const StyledRestaurantList = styled.div`
   }
 `
 
-const RestaurantList = () => {
+const LockedPage = () => {
   return (
     <StyledRestaurantList>
-      <h2 align="left">會再二訪</h2>
-      <p align="left" className="description">下次還有機會抽到！</p>
+      <h2 align="left">未解鎖餐廳</h2>
+      <p align="left" className="description">之後和朋友一起來造訪吧！</p>
       <div align="left" className="restaurant-list">
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
+        <LockedListModel />
       </div>
     </StyledRestaurantList>
   )
 }
 
-export default RestaurantList
+export default LockedPage

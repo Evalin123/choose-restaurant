@@ -51,10 +51,12 @@ const Sidebar = () => {
       <Button
         variant="unstyled"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
+        onClick={() => { history.push("/lockedPage") }}
       >
         未解鎖的餐廳
       </Button>
       <Button
+        onClick={() => { history.push("/blackList") }}
         variant="unstyled"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
       >

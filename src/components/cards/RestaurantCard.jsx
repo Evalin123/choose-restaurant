@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const StyledRestaurantCard = styled(Box)`
   width: 238.71px;
-  height: 290px;
+  height: 296px;
 
   .restaurant-img {
     width: 238.71px;
