@@ -13,25 +13,26 @@ const StyledRestaurantPage = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   top: 119px;
 
   .restaurant-name { 
+    width: 200px;
+    height: 32px;
     margin-top: 65px;
-    left: 403px;
+    margin-left: 403px;
     font-family: Roboto;
+    font-style: normal;
     font-weight: bold;
     font-size: 25px;
     line-height: 29px;
     letter-spacing: 0.2em;
-    color: #000000;
-
+    color: #CC7B4E;
   }
 
   .restaurant-box {
     width: 634px;
     height: 475.5px;
-    left: 403px;
+    margin-left: 403px;
     margin-top: 12px;
     border-radius: 5px;
   }
@@ -56,10 +57,10 @@ const StyledRestaurantPage = styled.div`
 
   .change-btn {
     margin-top: 10.5px;
-    left: 17.5%;
+    margin-left: 908px;
     width: 129px;
     height: 62px;
-    background: #131313;
+    background: #CC7B4E;
     border-radius: 5px;
     font-family: Roboto;
     font-weight: bold;
@@ -77,7 +78,7 @@ const StyledRestaurantPage = styled.div`
 const RestaurantPage = () => {
   return (
     <StyledRestaurantPage>
-      <p className="restaurant-name">
+      <p align="left" className="restaurant-name">
         餐廳
       </p>
       <Box className="restaurant-box" overflow="hidden">

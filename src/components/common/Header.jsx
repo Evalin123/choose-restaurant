@@ -8,9 +8,10 @@ import {
   DrawerOverlay,
   DrawerContent
 } from "@chakra-ui/react"
-import { SunIcon, HamburgerIcon } from '@chakra-ui/icons'
+import { SunIcon } from '@chakra-ui/icons'
 
 import Sidebar from "./Sidebar";
+import { ReactComponent as HamburgerIcon } from "../images/hamberger.svg"
 
 const StyledPageHeader = styled.div`
   border: 1px solid rgb(235, 237, 240);
@@ -52,6 +53,7 @@ const StyledPageHeader = styled.div`
 
   .hamberger-btn {
     width: 51px;
+    height: 60px;
     left: 940px;
   }
 `
@@ -60,11 +62,12 @@ const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
   const history = useHistory();
+
   return (
     <StyledPageHeader>
       <IconButton
         className="home-btn"
-        variant="outline"
+        variant="unstyled"
         colorScheme="teal"
         aria-label="Call Sage"
         fontSize="20px"
@@ -72,16 +75,18 @@ const Header = () => {
         onClick={() => {
           history.push("/");
         }}
+        _focus={{ borderRadius: "none" }}
       >
       </IconButton>
       <p>你好！今天要吃什麼呢？</p>
       <div>
         <IconButton
           className="hamberger-btn"
-          variant="ghost"
+          variant="unstyled"
           icon={<HamburgerIcon w={9} h={9} color="#131313;" />}
           ref={btnRef} colorScheme="teal"
           onClick={onOpen}
+          _focus={{ borderRadius: "none" }}
         >
           Open
       </IconButton>

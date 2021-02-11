@@ -13,16 +13,43 @@ import {
   Text
 } from "@chakra-ui/react";
 import styled from "styled-components";
+import LockImg from "../images/lock.svg";
 
 const StyledBox = styled(Box)`
   width: 238.71px;
   height: 296px;
+
+  .img-group {
+    width: 238.71px;
+    height: 238.71px;
+    position: relative;
+  }
 
   .restaurant-img {
     width: 238.71px;
     height: 238.71px;
     object-fit: cover;
     filter: contrast(20%);
+    z-index: -1;
+    position: absolute;
+  }
+
+  .black-bg {
+    width: 238.71px;
+    height: 238.71px;
+    background-color: #000;
+    opacity:0.5;
+    z-index: 0;
+    position: absolute;
+  }
+
+  .lock-img {
+    width: 55px;
+    height: 90px;
+    margin-top: 82px;
+    margin-left: 92px;
+    z-index: 1;
+    position: absolute;
   }
 
   .restaurant-info {
@@ -58,24 +85,33 @@ const RestaurantListModel = () => {
         mt={50}
         _focus={{ border: "none" }}
       >
-        <StyledBox>
-          <Image className="restaurant-img" src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Food Img" />
+        <StyledBox boxShadow="lg">
+          <div className="img-group">
+            <Image className="restaurant-img" src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Food Img" />
+            <div className="black-bg" />
+            <Image className="lock-img" src={LockImg} alt="Lock Img" />
+          </div>
           <Box className="restaurant-info">
             <p className="restaurant-title">
-              ???
+              ?
             </p>
           </Box>
         </StyledBox>
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <div h={151} w={634}>
-            <Image objectFit="cover" filter="contrast(30%)" h={151} w={634} src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Food Img" />
-          </div>
+        <ModalContent h={400} w={634}>
+          <Image
+            objectFit="cover"
+            filter="contrast(15%)"
+            h={151}
+            w={634}
+            src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt="Food Img"
+          />
           <ModalHeader w={350}>
             想吃的話，等著你們來探索！
-        </ModalHeader>
+          </ModalHeader>
           <ModalCloseButton borderRadius={50} bg='#000' color='#fff' _focus={{ border: "none" }} />
           <ModalBody w={420} h={200}>
             <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">地址 / 微風百貨 1F</Text>
