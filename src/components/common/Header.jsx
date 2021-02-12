@@ -56,6 +56,11 @@ const StyledPageHeader = styled.div`
     height: 60px;
     left: 940px;
   }
+
+  @media(max-width: 390px) {
+    width: 100%;
+    height: 44px;
+  }
 `
 
 const Header = () => {
@@ -89,7 +94,7 @@ const Header = () => {
           _focus={{ borderRadius: "none" }}
         >
           Open
-      </IconButton>
+        </IconButton>
         <Drawer
           isOpen={isOpen}
           placement="right"

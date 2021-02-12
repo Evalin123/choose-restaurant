@@ -87,7 +87,7 @@ const RestaurantPage = () => {
           <RestaurantModel />
         </div>
       </Box>
-      <Button className="change-btn">
+      <Button variant="unstyled" _focus={{ border: 'none' }} className="change-btn">
         換別家
       </Button>
     </StyledRestaurantPage>

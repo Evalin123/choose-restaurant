@@ -50,7 +50,7 @@ const StyledSignup = styled.div`
     font-size: 25px;
     line-height: 29px;
     letter-spacing: 0.2em;
-    color: #131313;
+    color: #CC7B4E;
   }
   .sign-btn.sign-in {
     color: #BABABA;
@@ -69,6 +69,7 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
+    background: #E5E5E5;
   }
 
   .email-input {
@@ -78,6 +79,7 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
+    background: #E5E5E5;
   }
 
   .psd-input-group {
@@ -91,6 +93,7 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
+    background: #E5E5E5;
   }
   .psd-eyes-btn {
     top: 13px;
@@ -100,7 +103,7 @@ const StyledSignup = styled.div`
     width: 104px;
     height: 62px;
     margin-top: 37px;
-    background-color: #131313;
+    background-color: #CC7B4E;
     border-radius: 5px;
     font-family: Roboto;
     font-size: 20px;
@@ -148,7 +151,8 @@ const Signup = () => {
           <Button
             className="sign-btn sign-in"
             colorScheme="teal"
-            variant="ghost"
+            variant="unstyled"
+            _focus={{ border: 'none' }}
             onClick={() => { history.push("/signin") }}
           >
             會員登入
@@ -157,7 +161,8 @@ const Signup = () => {
           <Button
             className="sign-btn"
             colorScheme="teal"
-            variant="ghost"
+            variant="unstyled"
+            _focus={{ border: 'none' }}
             onClick={() => { history.push("/signup") }}
           >
             會員註冊
@@ -174,7 +179,8 @@ const Signup = () => {
           <InputRightElement className="psd-eyes-btn" width="3rem">
             <IconButton
               h="1.75rem"
-              variant="ghost"
+              variant="unstyled"
+              _focus={{ border: 'none' }}
               onClick={handleClick}
               icon={
                 show ? (
@@ -190,11 +196,13 @@ const Signup = () => {
           <Input
             type={show ? "text" : "password"}
             placeholder="確認密碼"
+            focusBorderColor="#6B6B6B"
           />
           <InputRightElement className="psd-eyes-btn" width="3rem" >
             <IconButton
               h="1.75rem"
-              variant="ghost"
+              variant="unstyled"
+              _focus={{ border: 'none' }}
               onClick={handleClick}
               icon={
                 show ? (

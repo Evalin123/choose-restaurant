@@ -132,6 +132,7 @@ const Signin = () => {
             className="sign-btn sign-up"
             colorScheme="teal"
             variant="unstyled"
+            _focus={{ border: 'none' }}
             onClick={() => { history.push("/signup") }}
           >
             會員註冊
@@ -143,7 +144,6 @@ const Signin = () => {
             type={show ? "text" : "password"}
             placeholder="密碼"
             focusBorderColor="#6B6B6B"
-            _active={{ borderBottomColor: "#FF9B63" }}
           />
           <InputRightElement className="psd-eyes-btn" width="3rem">
             <IconButton
@@ -166,7 +166,7 @@ const Signin = () => {
           variant="unstyled"
           onClick={() => { history.push("/") }}
         >
-          註冊
+          登入
         </Button>
       </Box>
     </StyledSignup>

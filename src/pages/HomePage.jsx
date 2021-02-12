@@ -80,7 +80,12 @@ const HomePage = () => {
         <RestaurantCard name="美式餐廳" img="https://images.pexels.com/photos/327158/pexels-photo-327158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
         <RestaurantCard name="亞洲料理" img="https://images.pexels.com/photos/1437590/pexels-photo-1437590.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
       </div>
-      <Button className="btn" onClick={() => { history.push("/restaurant/:id") }}>
+      <Button
+        variant="unstyled"
+        _focus={{ border: 'none' }}
+        className="btn"
+        onClick={() => { history.push("/restaurant/:id") }}
+      >
         今天吃什麼
       </Button>
     </StyledHomePage>
