@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "@chakra-ui/react"
 
-import RestaurantCard from "../components/cards/RestaurantCard"
+import RestaurantCard from "../components/cards/RestaurantCard";
+import { getRestaurant } from "../utils";
 
 const StyledHomePage = styled.div`
   height: 781px;
@@ -67,6 +68,17 @@ const StyledHomePage = styled.div`
 
 const HomePage = () => {
   const history = useHistory()
+  const handleSubmit = () => {
+    getRestaurant()
+      .then(res => {
+        history.push(`/restaurant/${res}`)
+        return res;
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   return (
     <StyledHomePage>
       <h1 className="title">今天吃什麼？</h1>
@@ -84,7 +96,7 @@ const HomePage = () => {
         variant="unstyled"
         _focus={{ border: 'none' }}
         className="btn"
-        onClick={() => { history.push("/restaurant/:id") }}
+        onClick={handleSubmit}
       >
         今天吃什麼
       </Button>

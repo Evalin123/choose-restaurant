@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import {
   Button,
@@ -7,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 
 import RestaurantModel from "../components/overlays/RestaurantModel"
+import { getRestaurant, getRestaurantDetail } from "../utils";
 
 const StyledRestaurantPage = styled.div`
   height: 100%;
@@ -76,18 +78,61 @@ const StyledRestaurantPage = styled.div`
 `
 
 const RestaurantPage = () => {
+  const { id } = useParams();
+  const history = useHistory();
+  const [restaurant, setResaturant] = useState({
+    Name: "",
+    Location: "",
+    TEL: "",
+    BusinessHours: "",
+    Price: "",
+    Image: ""
+  })
+  const handleSubmit = () => {
+    getRestaurant()
+      .then(res => {
+        history.push(`/restaurant/${res}`)
+        return res;
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  useEffect(() => {
+    getRestaurantDetail(id)
+      .then(res => {
+        setResaturant({
+          Name: res.Name,
+          Location: res.Location,
+          TEL: res.TEL,
+          BusinessHours: res.BusinessHours,
+          Price: res.Price,
+          Image: res.Image
+        })
+      })
+  }, [id])
+  console.log(restaurant);
   return (
     <StyledRestaurantPage>
       <p align="left" className="restaurant-name">
-        餐廳
+        {restaurant.Name}
       </p>
       <Box className="restaurant-box" overflow="hidden">
-        <Image className="restaurant-img" src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Food Img" />
+        <Image className="restaurant-img" src={restaurant.Image} alt="Food Img" />
         <div className="view-more">
-          <RestaurantModel />
+          <RestaurantModel
+            name={restaurant.Name}
+            location={restaurant.Location}
+            price={restaurant.Price}
+            tel={restaurant.TEL}
+            businessHours={restaurant.BusinessHours}
+            img={restaurant.Image}
+            id={id}
+          />
         </div>
       </Box>
-      <Button variant="unstyled" _focus={{ border: 'none' }} className="change-btn">
+      <Button variant="unstyled" _focus={{ border: 'none' }} className="change-btn" onClick={handleSubmit}>
         換別家
       </Button>
     </StyledRestaurantPage>

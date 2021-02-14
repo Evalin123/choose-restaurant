@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Input,
@@ -11,6 +11,7 @@ import {
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 import styled from "styled-components";
+import { signin } from "../utils";
 
 const StyledSignup = styled.div`
   height: 100%;
@@ -114,6 +115,28 @@ const Signin = () => {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   const history = useHistory();
+  const [user, setUser] = useState({
+    UserName: "",
+    Password: ""
+  })
+  const handleChange = (keyName, e) => {
+    setUser((prev) => ({
+      ...prev,
+      [keyName]: e.target.value
+    }));
+  }
+  const handleSubmit = () => {
+    signin(user)
+      .then((res) => {
+        history.push("/")
+        return res;
+      })
+      .catch((err) => {
+        alert("登入失敗");
+        console.log(err);
+      })
+  }
+
   return (
     <StyledSignup>
       <Box className="input-section">
@@ -138,12 +161,18 @@ const Signin = () => {
             會員註冊
           </Button>
         </div>
-        <Input className="account-input" focusBorderColor="#6B6B6B" placeholder="帳號" />
+        <Input
+          className="account-input"
+          focusBorderColor="#6B6B6B"
+          placeholder="帳號"
+          onChange={(e) => { handleChange("UserName", e) }}
+        />
         <InputGroup className="psd-input-group">
           <Input
             type={show ? "text" : "password"}
             placeholder="密碼"
             focusBorderColor="#6B6B6B"
+            onChange={(e) => { handleChange("Password", e) }}
           />
           <InputRightElement className="psd-eyes-btn" width="3rem">
             <IconButton
@@ -164,7 +193,7 @@ const Signin = () => {
           className="submit-btn"
           colorScheme="teal"
           variant="unstyled"
-          onClick={() => { history.push("/") }}
+          onClick={() => { handleSubmit(user) }}
         >
           登入
         </Button>

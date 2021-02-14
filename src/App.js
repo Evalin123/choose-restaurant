@@ -13,6 +13,7 @@ import BlackListPage from "./pages/BlackListPage";
 import LockedPage from "./pages/LockedPage";
 
 export default function App() {
+  localStorage.setItem("Authorization", "Bearer keyAtYdf2pfxnig7B");
   return (
     <ChakraProvider>
       <div className="App">

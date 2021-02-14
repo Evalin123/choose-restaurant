@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Button,
@@ -12,6 +12,19 @@ const StyledSidebar = styled.div`
   background-color: #717A65;
   display: flex;
   flex-direction: column;
+
+  .username {
+    width: 300px;
+    height: 67px;
+    margin-top: 55px;
+    margin-left: 31%;
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+  }
 
   Button {
     width: 300px;
@@ -30,17 +43,33 @@ const StyledSidebar = styled.div`
 
 const Sidebar = () => {
   const history = useHistory();
+  const UserName = localStorage.getItem("UserName");
+  console.log("User: ", UserName);
+  const [userName, setUserName] = useState("")
+
+  useEffect(() => {
+    if (UserName) {
+      setUserName(UserName)
+    }
+    else {
+      setUserName("")
+    }
+  }, [UserName])
 
   return (
     <StyledSidebar>
-      <Button
-        className="first-btn"
-        variant="unstyled"
-        onClick={() => { history.push("/signup") }}
-        _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
-      >
-        會員登入/註冊
-      </Button>
+      {
+        userName !== "" ?
+          <p className="username">{userName}</p> :
+          <Button
+            className="first-btn"
+            variant="unstyled"
+            onClick={() => { history.push("/signup") }}
+            _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
+          >
+            會員登入/註冊
+        </Button>
+      }
       <Button
         variant="unstyled"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
@@ -69,9 +98,18 @@ const Sidebar = () => {
       >
         關於今天吃什麼
       </Button>
-      <Button variant="unstyled" _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}>
-        登出
-      </Button>
+      {userName === "" ? <></> :
+        <Button
+          variant="unstyled"
+          _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
+          onClick={() => {
+            localStorage.removeItem("UserName");
+            localStorage.removeItem("UserId");
+            history.push("/signin");
+          }}
+        >
+          登出
+      </Button>}
     </StyledSidebar>
   )
 

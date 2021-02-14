@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Input,
@@ -17,6 +17,7 @@ import {
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 import styled from "styled-components";
+import { signup } from "../utils";
 
 const StyledSignup = styled.div`
   height: 100%;
@@ -144,6 +145,37 @@ const Signup = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = React.useRef()
 
+  const [user, setUser] = useState({
+    UserName: "",
+    Email: "",
+    Password: ""
+  });
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleChange = (keyName, e) => {
+    setUser((prev) => ({
+      ...prev,
+      [keyName]: e.target.value
+    }));
+  };
+
+  const handleSubmit = (user) => {
+    if (confirmPassword === user.Password) {
+      signup(user)
+        .then(res => {
+          onOpen();
+          return res
+        })
+        .catch(err => {
+          alert("登入失敗");
+          console.log(err);
+        })
+    }
+    else {
+      alert("請確認密碼");
+    }
+  }
+
   return (
     <StyledSignup>
       <Box className="input-section">
@@ -168,13 +200,24 @@ const Signup = () => {
             會員註冊
           </Button>
         </div>
-        <Input className="account-input" focusBorderColor="#6B6B6B" placeholder="帳號" />
-        <Input className="email-input" focusBorderColor="#6B6B6B" placeholder="電子信箱" />
+        <Input
+          className="account-input"
+          focusBorderColor="#6B6B6B"
+          placeholder="帳號"
+          onChange={(e) => { handleChange("UserName", e) }}
+        />
+        <Input
+          className="email-input"
+          focusBorderColor="#6B6B6B"
+          placeholder="電子信箱"
+          onChange={(e) => { handleChange("Email", e) }}
+        />
         <InputGroup className="psd-input-group">
           <Input
             focusBorderColor="#6B6B6B"
             type={show ? "text" : "password"}
             placeholder="密碼"
+            onChange={(e) => { handleChange("Password", e) }}
           />
           <InputRightElement className="psd-eyes-btn" width="3rem">
             <IconButton
@@ -197,6 +240,9 @@ const Signup = () => {
             type={show ? "text" : "password"}
             placeholder="確認密碼"
             focusBorderColor="#6B6B6B"
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
           />
           <InputRightElement className="psd-eyes-btn" width="3rem" >
             <IconButton
@@ -218,7 +264,7 @@ const Signup = () => {
           className="submit-btn"
           colorScheme="teal"
           variant="ghost"
-          onClick={onOpen}
+          onClick={() => { handleSubmit(user) }}
         >
           註冊
         </Button>
@@ -240,7 +286,7 @@ const Signup = () => {
                 ref={cancelRef}
                 onClick={() => {
                   onClose();
-                  history.push("/signin")
+                  history.push("/")
                 }}
               >
                 趕緊來登入
