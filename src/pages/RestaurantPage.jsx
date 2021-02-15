@@ -112,7 +112,6 @@ const RestaurantPage = () => {
         })
       })
   }, [id])
-  console.log(restaurant);
   return (
     <StyledRestaurantPage>
       <p align="left" className="restaurant-name">

@@ -109,13 +109,13 @@ const AfterRestaurantPage = () => {
         console.log(err);
       })
   }
-  const handleBlackList = async (review) => {
-    await setReview((prev) => ({
-      ...prev,
+  const handleBlackList = (review) => {
+    let afterReview = {
+      ...review,
       IsBlackList: "true",
-    }));
-    console.log(review);
-    isEaten(review)
+    }
+    setReview(afterReview)
+    isEaten(afterReview)
       .then(res => {
         history.push('/');
         return res;
@@ -133,7 +133,7 @@ const AfterRestaurantPage = () => {
           Image: res.Image
         })
       })
-  })
+  }, [id])
 
   return (
     <StyledAfterRestaurantPage>

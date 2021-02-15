@@ -89,12 +89,54 @@ export const isEaten = async (review) => {
       "IsBlackList": review.IsBlackList
     }
   }
-  console.log(reviewData);
   const Authorization = localStorage.getItem("Authorization");
   const config = {
     headers: { Authorization: Authorization }
   };
   const { data } = await axios.post('https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Reviews', reviewData, config);
-  //console.log(data);
   return data.fields;
+}
+
+export const getEatenRestaurant = async () => {
+  const UserName = localStorage.getItem("UserName");
+  const Authorization = localStorage.getItem("Authorization");
+  const config = {
+    headers: { Authorization: Authorization }
+  };
+  const { data } = await axios.get(`https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Reviews?filterByFormula=AND(%7BUsers%7D%3D'${UserName}'%2C%7BIsBlackList%7D!%3D'true')`, config);
+  return data.records;
+}
+
+export const getBlackList = async () => {
+  const UserName = localStorage.getItem("UserName");
+  const Authorization = localStorage.getItem("Authorization");
+  const config = {
+    headers: { Authorization: Authorization }
+  };
+  const { data } = await axios.get(`https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Reviews?filterByFormula=AND(%7BUsers%7D%3D'${UserName}'%2C%7BIsBlackList%7D%3D'true')`, config);
+  return data.records;
+}
+
+export const getLockedList = async () => {
+  const UserName = localStorage.getItem("UserName");
+  const Authorization = localStorage.getItem("Authorization");
+  const config = {
+    headers: { Authorization: Authorization }
+  };
+
+  const { data: allRestaurantList } = await axios.get('https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Restaurants', config);
+  let allRestaurantsIds = [];
+  allRestaurantList.records.map((record, index) => {
+    allRestaurantsIds[index] = record.id;
+    return allRestaurantsIds;
+  })
+
+  let allReviewsRestaurantIds = [];
+  const { data: allReviewsList } = await axios.get(`https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Reviews?filterByFormula=%7BUsers%7D%3D'${UserName}'`, config);
+  allReviewsList.records.map((record, index) => {
+    allReviewsRestaurantIds[index] = record.fields.Restaurants[0];
+    return allReviewsRestaurantIds;
+  })
+  let lockedRestaurantsIds = allRestaurantsIds.filter(e => allReviewsRestaurantIds.indexOf(e) < 0);
+  return lockedRestaurantsIds;
 }

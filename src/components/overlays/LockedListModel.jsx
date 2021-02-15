@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import LockImg from "../images/lock.svg";
+import { getRestaurantDetail } from "../../utils";
 
 const StyledBox = styled(Box)`
   width: 238.71px;
@@ -72,8 +73,23 @@ const StyledBox = styled(Box)`
   }
 `
 
-const RestaurantListModel = () => {
+const RestaurantListModel = ({ id }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [restaurant, setResaturant] = useState({
+    Location: "",
+    Price: "",
+    Image: ""
+  });
+  useEffect(() => {
+    getRestaurantDetail(id)
+      .then(res => {
+        setResaturant({
+          Location: res.Location,
+          Price: res.Price,
+          Image: res.Image
+        })
+      })
+  }, [id])
   return (
     <>
       <Button
@@ -87,7 +103,7 @@ const RestaurantListModel = () => {
       >
         <StyledBox boxShadow="lg">
           <div className="img-group">
-            <Image className="restaurant-img" src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Food Img" />
+            <Image className="restaurant-img" src={restaurant.Image} alt="Food Img" />
             <div className="black-bg" />
             <Image className="lock-img" src={LockImg} alt="Lock Img" />
           </div>
@@ -106,7 +122,7 @@ const RestaurantListModel = () => {
             filter="contrast(15%)"
             h={151}
             w={634}
-            src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            src={restaurant.Image}
             alt="Food Img"
           />
           <ModalHeader w={350}>
@@ -114,8 +130,8 @@ const RestaurantListModel = () => {
           </ModalHeader>
           <ModalCloseButton borderRadius={50} bg='#000' color='#fff' _focus={{ border: "none" }} />
           <ModalBody w={420} h={200}>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">地址 / 微風百貨 1F</Text>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">價位 / $$$</Text>
+            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">地址 / {restaurant.Location}</Text>
+            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">價位 / {restaurant.Price}</Text>
           </ModalBody>
         </ModalContent>
       </Modal>

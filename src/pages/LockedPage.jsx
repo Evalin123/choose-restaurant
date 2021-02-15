@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import LockedListModel from "../components/overlays/LockedListModel";
+import { getLockedList } from "../utils";
 
 const StyledRestaurantList = styled.div`
   width: 100%;
@@ -47,23 +48,30 @@ const StyledRestaurantList = styled.div`
 `
 
 const LockedPage = () => {
+  const [restaurantList, setRestaurantList] = useState([]);
+  useEffect(() => {
+    getLockedList()
+      .then(res => {
+        setRestaurantList(res)
+        return res;
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [])
+
   return (
     <StyledRestaurantList>
       <h2 align="left">未解鎖餐廳</h2>
       <p align="left" className="description">之後和朋友一起來造訪吧！</p>
       <div align="left" className="restaurant-list">
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
-        <LockedListModel />
+        {
+          restaurantList.map((restaurantId, index) => {
+            return (
+              <LockedListModel key={index} id={restaurantId} />
+            )
+          })
+        }
       </div>
     </StyledRestaurantList>
   )

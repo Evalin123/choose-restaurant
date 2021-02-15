@@ -8,10 +8,10 @@ import {
   DrawerOverlay,
   DrawerContent
 } from "@chakra-ui/react"
-import { SunIcon } from '@chakra-ui/icons'
 
 import Sidebar from "./Sidebar";
 import { ReactComponent as HamburgerIcon } from "../images/hamberger.svg"
+import { ReactComponent as Logo } from "../images/logo.svg"
 
 const StyledPageHeader = styled.div`
   border: 1px solid rgb(235, 237, 240);
@@ -75,8 +75,7 @@ const Header = () => {
         variant="unstyled"
         colorScheme="teal"
         aria-label="Call Sage"
-        fontSize="20px"
-        icon={<SunIcon />}
+        icon={<Logo h={9} w={9} />}
         onClick={() => {
           history.push("/");
         }}

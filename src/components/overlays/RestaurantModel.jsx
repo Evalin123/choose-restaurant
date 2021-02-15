@@ -18,7 +18,6 @@ import { MdSend } from 'react-icons/md'
 const RestaurantModel = ({ name, location, price, tel, businessHours, img, id }) => {
   const history = useHistory()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  console.log(name);
   return (
     <>
       <Button

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import RestaurantListModel from "../components/overlays/RestaurantListModel";
+import { getBlackList } from "../utils";
 
 const StyledRestaurantList = styled.div`
   width: 100%;
@@ -47,23 +48,30 @@ const StyledRestaurantList = styled.div`
 `
 
 const BlackListPage = () => {
+  const [restaurantList, setRestaurantList] = useState([]);
+  useEffect(() => {
+    getBlackList()
+      .then(res => {
+        setRestaurantList(res)
+        return res;
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [])
+
   return (
     <StyledRestaurantList>
       <h2 align="left">黑名單</h2>
       <p align="left" className="description">此生不會再見到</p>
       <div align="left" className="restaurant-list">
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
-        <RestaurantListModel />
+        {
+          restaurantList.map((restaurant, index) => {
+            return (
+              <RestaurantListModel key={index} id={restaurant.fields.Restaurants[0]} />
+            )
+          })
+        }
       </div>
     </StyledRestaurantList>
   )

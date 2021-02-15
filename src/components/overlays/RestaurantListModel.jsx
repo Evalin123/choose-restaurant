@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -13,6 +13,7 @@ import {
   Text
 } from "@chakra-ui/react";
 import styled from "styled-components";
+import { getRestaurantDetail } from "../../utils";
 
 const StyledBox = styled(Box)`
   width: 238.71px;
@@ -44,8 +45,30 @@ const StyledBox = styled(Box)`
   }
 `
 
-const RestaurantListModel = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+const RestaurantListModel = ({ id }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [restaurant, setResaturant] = useState({
+    Name: "",
+    Location: "",
+    TEL: "",
+    BusinessHours: "",
+    Price: "",
+    Image: ""
+  });
+  useEffect(() => {
+    getRestaurantDetail(id)
+      .then(res => {
+        setResaturant({
+          Name: res.Name,
+          Location: res.Location,
+          TEL: res.TEL,
+          BusinessHours: res.BusinessHours,
+          Price: res.Price,
+          Image: res.Image
+        })
+      })
+  }, [id])
+
   return (
     <>
       <Button
@@ -58,10 +81,10 @@ const RestaurantListModel = () => {
         _focus={{ border: "none" }}
       >
         <StyledBox boxShadow="lg">
-          <Image className="restaurant-img" src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Food Img" />
+          <Image className="restaurant-img" src={restaurant.Image} alt="Food Img" />
           <Box className="restaurant-info">
             <p className="restaurant-title">
-              餐廳名稱
+              {restaurant.Name}
             </p>
           </Box>
         </StyledBox>
@@ -70,17 +93,17 @@ const RestaurantListModel = () => {
         <ModalOverlay />
         <ModalContent>
           <div h={151} w={634}>
-            <Image objectFit="cover" filter="contrast(25%)" h={151} w={634} src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Food Img" />
+            <Image objectFit="cover" filter="contrast(25%)" h={151} w={634} src={restaurant.Image} alt="Food Img" />
           </div>
           <ModalHeader w={200}>
-            餐廳名稱
-        </ModalHeader>
+            {restaurant.Name}
+          </ModalHeader>
           <ModalCloseButton borderRadius={50} bg='#000' color='#FFF' _focus={{ border: "none" }} />
           <ModalBody w={420} h={200}>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">地址 / 微風百貨 1F</Text>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">電話 / 02-2222-2222</Text>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">價位 / $$$</Text>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">營業時間 / 11-22</Text>
+            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">地址 / {restaurant.Location}</Text>
+            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">電話 / {restaurant.TEL}</Text>
+            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">價位 / {restaurant.Price}</Text>
+            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">營業時間 / {restaurant.BusinessHours}</Text>
             <Text h={23} w={370} mb={15} fontSize={16} fontFamily="Roboto" color='#FFF' bg='#717A65'>本資訊僅供參考，請以現場營業時間、訂位狀況為主</Text>
           </ModalBody>
         </ModalContent>
