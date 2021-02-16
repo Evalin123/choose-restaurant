@@ -6,18 +6,19 @@ import {
 import styled from "styled-components";
 
 const StyledRestaurantCard = styled(Box)`
-  width: 238.71px;
-  height: 296px;
+  width: 224px;
+  height: 300px;
+  margin-right: 20px;
 
   .restaurant-img {
-    width: 238.71px;
-    height: 238.71px;
+    width: 224px;
+    height: 240px;
     object-fit: cover;
   }
 
   .restaurant-info {
-    width: 238.71px;
-    height: 57.29px;
+    width: 224px;
+    height: 60px;
     background-color: #E5E5E5;
     display: flex;
     justify-content: center;

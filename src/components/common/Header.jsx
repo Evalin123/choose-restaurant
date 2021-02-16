@@ -6,7 +6,7 @@ import {
   useDisclosure,
   Drawer,
   DrawerOverlay,
-  DrawerContent
+  DrawerContent,
 } from "@chakra-ui/react"
 
 import Sidebar from "./Sidebar";
@@ -17,20 +17,27 @@ const StyledPageHeader = styled.div`
   border: 1px solid rgb(235, 237, 240);
   width: 100%;
   height: 119px;
+  padding: 0px 35px 0px 35px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   background: #F7E1D2;
+
+  .logo-session {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .home-btn {
     border-radius: 50%;
     width: 77px;
     height: 77px;
-    margin-left: 32px;
   }
 
   p {
-    margin-left: 29px;
     font-size: 20px;
     font-family: 'Fira Sans', sans-serif;
   }
@@ -38,7 +45,6 @@ const StyledPageHeader = styled.div`
   .sign-in-btn {
     width: 104px;
     height: 62px;
-    left: 680px;
     font-family: 'Roboto';
     font-size: 20px;
   }
@@ -46,7 +52,6 @@ const StyledPageHeader = styled.div`
   .sign-up-btn {
     width: 104px;
     height: 62px;
-    left: 700px;
     font-family: 'Roboto';
     font-size: 20px;
   }
@@ -54,12 +59,6 @@ const StyledPageHeader = styled.div`
   .hamberger-btn {
     width: 51px;
     height: 60px;
-    left: 940px;
-  }
-
-  @media(max-width: 390px) {
-    width: 100%;
-    height: 44px;
   }
 `
 
@@ -70,43 +69,43 @@ const Header = () => {
 
   return (
     <StyledPageHeader>
-      <IconButton
-        className="home-btn"
-        variant="unstyled"
-        colorScheme="teal"
-        aria-label="Call Sage"
-        icon={<Logo h={9} w={9} />}
-        onClick={() => {
-          history.push("/");
-        }}
-        _focus={{ borderRadius: "none" }}
-      >
-      </IconButton>
-      <p>你好！今天要吃什麼呢？</p>
-      <div>
+      <div className="logo-session">
         <IconButton
-          className="hamberger-btn"
+          className="home-btn"
           variant="unstyled"
-          icon={<HamburgerIcon w={9} h={9} color="#131313;" />}
-          ref={btnRef} colorScheme="teal"
-          onClick={onOpen}
+          colorScheme="teal"
+          aria-label="Call Sage"
+          icon={<Logo h={9} w={9} />}
+          onClick={() => {
+            history.push("/");
+          }}
           _focus={{ borderRadius: "none" }}
         >
-          Open
         </IconButton>
-        <Drawer
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-          finalFocusRef={btnRef}
-        >
-          <DrawerOverlay>
-            <DrawerContent>
-              <Sidebar />
-            </DrawerContent>
-          </DrawerOverlay>
-        </Drawer>
+        <p>你好！今天要吃什麼呢？</p>
       </div>
+      <IconButton
+        className="hamberger-btn"
+        variant="unstyled"
+        icon={<HamburgerIcon w={9} h={9} color="#131313;" />}
+        ref={btnRef} colorScheme="teal"
+        onClick={onOpen}
+        _focus={{ borderRadius: "none" }}
+      >
+        Open
+      </IconButton>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay>
+          <DrawerContent>
+            <Sidebar />
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
     </StyledPageHeader>
   )
 }

@@ -14,6 +14,7 @@ export const signup = async (user) => {
   };
   const records = await axios.post('https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Users', userData, config);
   localStorage.setItem("UserName", records.data.fields.UserName);
+  localStorage.setItem("UserEmail", records.data.fields.UserEmail);
   localStorage.setItem("UserId", records.data.id);
   return records.data.fields;
 };
@@ -27,21 +28,11 @@ export const signin = async (user) => {
   const config = {
     headers: { Authorization: Authorization }
   };
-  const { data } = await axios.get('https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Users', config);
-  let record = {};
-  data.records.filter((record) => {
-    if (record.fields.UserName === userData.UserName && record.fields.Password === userData.Password) {
-      localStorage.setItem("UserName", record.fields.UserName);
-      localStorage.setItem("UserId", record.id);
-      record = {
-        UserName: record.fields.UserName,
-        Password: record.fields.Password,
-        id: record.id
-      }
-      return true
-    }
-    return false;
-  })
+  const { data } = await axios.get(`https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Users?filterByFormula=AND(%7BUserName%7D%3D'${userData.UserName}'%2C%7BPassword%7D%3D'${userData.Password}')`, config);
+  let record = data.records[0];
+  localStorage.setItem("UserName", record.fields.UserName);
+  localStorage.setItem("UserEmail", record.fields.Email);
+  localStorage.setItem("UserId", record.id);
   return record;
 }
 

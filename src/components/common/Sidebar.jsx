@@ -8,16 +8,24 @@ import styled from "styled-components";
 const StyledSidebar = styled.div`
   border: 1px solid rgb(235, 237, 240);
   height: 100vh;
-  width: 300px;
+  width: 334px;
+  padding: 120px 0px 100px 0px;
   background-color: #717A65;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .userinfo {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   .username {
-    width: 300px;
-    height: 67px;
-    margin-top: 55px;
-    margin-left: 31%;
     font-family: Fira Sans;
     font-style: normal;
     font-weight: bold;
@@ -26,44 +34,67 @@ const StyledSidebar = styled.div`
     color: #FFFFFF;
   }
 
+  .useremail {
+    font-family: Fira Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
   Button {
-    width: 300px;
-    height: 67px;
-    margin-top: 50px;
+    width: 100%;
+    height: 80px;
     font-family: Roboto;
-    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
     line-height: 23px;
     color: #FFFFFF;
     border: none;
   }
-  Button.first-btn {
-    margin-top: 55px;
+  Button:hover {
+    background-color: #E5E5E5;
+    color: #717A65;
   }
 `
 
 const Sidebar = () => {
   const history = useHistory();
   const UserName = localStorage.getItem("UserName");
+  const UserEmail = localStorage.getItem("UserEmail");
   console.log("User: ", UserName);
   const [userName, setUserName] = useState("")
+  const [userEmail, setUserEmail] = useState("")
 
   useEffect(() => {
-    if (UserName) {
-      setUserName(UserName)
+    if (UserName && UserEmail) {
+      setUserName(UserName);
+      setUserEmail(UserEmail);
     }
     else {
-      setUserName("")
+      setUserName("");
+      setUserEmail("");
     }
-  }, [UserName])
+  }, [UserName, UserEmail])
 
   return (
     <StyledSidebar>
       {
         userName !== "" ?
-          <p className="username">{userName}</p> :
+          <div className="userinfo">
+            <p align="center" className="username">{userName}</p>
+            <p align="center" className="useremail">{userEmail}</p>
+          </div>
+          :
           <Button
             className="first-btn"
-            variant="unstyled"
+            variant="ghost"
+            borderRadius="0px"
             onClick={() => { history.push("/signup") }}
             _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
           >
@@ -71,14 +102,16 @@ const Sidebar = () => {
         </Button>
       }
       <Button
-        variant="unstyled"
+        variant="ghost"
+        borderRadius="0px"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
         onClick={() => { history.push("/restaurantList") }}
       >
         造訪過的餐廳
       </Button>
       <Button
-        variant="unstyled"
+        variant="ghost"
+        borderRadius="0px"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
         onClick={() => { history.push("/lockedPage") }}
       >
@@ -86,13 +119,15 @@ const Sidebar = () => {
       </Button>
       <Button
         onClick={() => { history.push("/blackList") }}
-        variant="unstyled"
+        variant="ghost"
+        borderRadius="0px"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
       >
         黑名單餐廳
       </Button>
       <Button
-        variant="unstyled"
+        variant="ghost"
+        borderRadius="0px"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
         onClick={() => { history.push("/about") }}
       >
@@ -100,7 +135,8 @@ const Sidebar = () => {
       </Button>
       {userName === "" ? <></> :
         <Button
-          variant="unstyled"
+          variant="ghost"
+          borderRadius="0px"
           _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
           onClick={() => {
             localStorage.removeItem("UserName");

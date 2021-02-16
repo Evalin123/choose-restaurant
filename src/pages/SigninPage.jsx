@@ -9,31 +9,34 @@ import {
   Button
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-
 import styled from "styled-components";
+
+import Container from "../components/common/Container"
 import { signin } from "../utils";
 
 const StyledSignup = styled.div`
   height: 100%;
   width: 100%;
-  top: 119px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  top: 120px;
+
+  .container {
+    padding-top: 100px;
+  }
 
   .input-section {
-    height: 60%;
-    width: 50%;
+    height: 100%;
+    width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 50px;
   }
 
   .sign-btn-group {
+    width: 70%;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -53,14 +56,12 @@ const StyledSignup = styled.div`
 
   .choose-p {
     font-size: 28px;
-    margin-left: 18px;
-    margin-right: 18px;
   }
 
   .account-input {
-    width: 401px;
-    height: 69px;
-    margin-top: 51px;
+    width: 460px;
+    height: 70px;
+    margin-top: 60px;
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
@@ -68,21 +69,10 @@ const StyledSignup = styled.div`
     border-radius: 5px; 
   }
 
-  .email-input {
-    width: 401px;
-    height: 69px;
-    margin-top: 34px;
-    font-family: Roboto;
-    font-size: 25px;
-    line-height: 37px;
-    background: #E5E5E5;
-    border-radius: 5px;
-  }
-
   .psd-input-group {
-    width: 401px;
-    height: 69px;
-    margin-top: 34px;
+    width: 460px;
+    height: 70px;
+    margin-top: 40px;
     background: #E5E5E5;
     border-radius: 5px;
   }
@@ -98,9 +88,9 @@ const StyledSignup = styled.div`
   }
 
   .submit-btn {
-    width: 104px;
+    width: 110px;
     height: 62px;
-    margin-top: 137px;
+    margin-top: 100px;
     background-color: #CC7B4E;
     border-radius: 5px;
     font-family: Roboto;
@@ -139,65 +129,68 @@ const Signin = () => {
 
   return (
     <StyledSignup>
-      <Box className="input-section">
-        <div className="sign-btn-group">
-          <Button
-            className="sign-btn"
-            colorScheme="teal"
-            variant="unstyled"
-            _focus={{ border: 'none' }}
-            onClick={() => { history.push("/signin") }}
-          >
-            會員登入
-          </Button>
-          <p className="choose-p">/</p>
-          <Button
-            className="sign-btn sign-up"
-            colorScheme="teal"
-            variant="unstyled"
-            _focus={{ border: 'none' }}
-            onClick={() => { history.push("/signup") }}
-          >
-            會員註冊
-          </Button>
-        </div>
-        <Input
-          className="account-input"
-          focusBorderColor="#6B6B6B"
-          placeholder="帳號"
-          onChange={(e) => { handleChange("UserName", e) }}
-        />
-        <InputGroup className="psd-input-group">
-          <Input
-            type={show ? "text" : "password"}
-            placeholder="密碼"
-            focusBorderColor="#6B6B6B"
-            onChange={(e) => { handleChange("Password", e) }}
-          />
-          <InputRightElement className="psd-eyes-btn" width="3rem">
-            <IconButton
-              h="1.75rem"
+      <Container className="container">
+        <Box className="input-section">
+          <div className="sign-btn-group">
+            <Button
+              className="sign-btn"
+              colorScheme="teal"
               variant="unstyled"
-              onClick={handleClick}
-              icon={
-                show ? (
-                  <ViewIcon w={6} h={6} color="gray.300" />
-                ) : (
-                    <ViewOffIcon w={6} h={6} color="gray.300" />
-                  )
-              }
-            ></IconButton>
-          </InputRightElement>
-        </InputGroup>
-        <Button
-          className="submit-btn"
-          colorScheme="teal"
-          variant="unstyled"
-          onClick={() => { handleSubmit(user) }}
-        >
-          登入
-        </Button>
-      </Box>
+              _focus={{ border: 'none' }}
+              onClick={() => { history.push("/signin") }}
+            >
+              會員登入
+            </Button>
+            <p className="choose-p">/</p>
+            <Button
+              className="sign-btn sign-up"
+              colorScheme="teal"
+              variant="unstyled"
+              _focus={{ border: 'none' }}
+              onClick={() => { history.push("/signup") }}
+            >
+              會員註冊
+            </Button>
+          </div>
+          <Input
+            className="account-input"
+            focusBorderColor="#6B6B6B"
+            placeholder="帳號"
+            onChange={(e) => { handleChange("UserName", e) }}
+          />
+          <InputGroup className="psd-input-group">
+            <Input
+              type={show ? "text" : "password"}
+              placeholder="密碼"
+              focusBorderColor="#6B6B6B"
+              onChange={(e) => { handleChange("Password", e) }}
+            />
+            <InputRightElement className="psd-eyes-btn" width="3rem">
+              <IconButton
+                h="1.75rem"
+                variant="unstyled"
+                _focus={{ border: 'none' }}
+                onClick={handleClick}
+                icon={
+                  show ? (
+                    <ViewIcon w={6} h={6} color="gray.300" />
+                  ) : (
+                      <ViewOffIcon w={6} h={6} color="gray.300" />
+                    )
+                }
+              ></IconButton>
+            </InputRightElement>
+          </InputGroup>
+          <Button
+            className="submit-btn"
+            colorScheme="teal"
+            variant="unstyled"
+            onClick={() => { handleSubmit(user) }}
+          >
+            登入
+          </Button>
+        </Box>
+      </Container>
     </StyledSignup>
   );
 };
