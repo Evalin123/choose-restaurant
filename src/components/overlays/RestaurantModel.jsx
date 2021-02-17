@@ -47,7 +47,7 @@ const RestaurantModel = ({ name, location, price, tel, businessHours, img, id })
             <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">電話 / {tel}</Text>
             <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">價位 / {price}</Text>
             <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">營業時間 / {businessHours}</Text>
-            <Text h={23} mb={15} fontSize={16} fontFamily="Roboto" color='#FFFFFF' bg='#717A65'>本資訊僅供參考，請以現場營業時間、訂位狀況為主</Text>
+            <Text h={23} mb={15} fontSize={12} fontFamily="Roboto" color='#717A65;' >本資訊僅供參考，請以現場營業時間、訂位狀況為主</Text>
           </ModalBody>
           <ModalFooter>
             <Button

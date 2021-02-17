@@ -16,18 +16,19 @@ import styled from "styled-components";
 import { getRestaurantDetail } from "../../utils";
 
 const StyledBox = styled(Box)`
-  width: 238.71px;
-  height: 296px;
+  width: 224px;
+  height: 300px;
+  margin-right: 20px;
 
   .restaurant-img {
-    width: 238.71px;
-    height: 238.71px;
+    width: 224px;
+    height: 240px;
     object-fit: cover;
   }
 
   .restaurant-info {
-    width: 238.71px;
-    height: 57.29px;
+    width: 224px;
+    height: 60px;
     background-color: #E5E5E5;
     display: flex;
     justify-content: center;
@@ -35,8 +36,6 @@ const StyledBox = styled(Box)`
   }
 
   .restaurant-title {
-    width: 70.66px;
-    height: 17.19px;
     font-family: Roboto;
     font-weight: 300;
     font-size: 16px;
@@ -91,21 +90,25 @@ const RestaurantListModel = ({ id }) => {
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <div h={151} w={634}>
-            <Image objectFit="cover" filter="contrast(25%)" h={151} w={634} src={restaurant.Image} alt="Food Img" />
-          </div>
-          <ModalHeader w={200}>
-            {restaurant.Name}
-          </ModalHeader>
+        <ModalContent h="50%">
+          <Box h={150}>
+            <Image objectFit="cover" filter="contrast(25%)" h={150} w='100%' src={restaurant.Image} alt="Food Img" />
+          </Box>
           <ModalCloseButton borderRadius={50} bg='#000' color='#FFF' _focus={{ border: "none" }} />
-          <ModalBody w={420} h={200}>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">地址 / {restaurant.Location}</Text>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">電話 / {restaurant.TEL}</Text>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">價位 / {restaurant.Price}</Text>
-            <Text h={23} mb={15} fontSize={20} fontFamily="Roboto">營業時間 / {restaurant.BusinessHours}</Text>
-            <Text h={23} w={370} mb={15} fontSize={16} fontFamily="Roboto" color='#FFF' bg='#717A65'>本資訊僅供參考，請以現場營業時間、訂位狀況為主</Text>
-          </ModalBody>
+          <Box h={450} pl="10%" pr="10%" display="flex" flexDirection="column" alignItems="center">
+            <ModalHeader align="left" w='100%' pt={30}>
+              {restaurant.Name}
+            </ModalHeader>
+            <ModalBody w='100%' >
+              <Box>
+                <Text h={23} fontSize={14} fontFamily="Roboto">地址 / {restaurant.Location}</Text>
+                <Text h={23} fontSize={14} fontFamily="Roboto">電話 / {restaurant.TEL}</Text>
+                <Text h={23} fontSize={14} fontFamily="Roboto">價位 / {restaurant.Price}</Text>
+                <Text h={23} fontSize={14} fontFamily="Roboto">營業時間 / {restaurant.BusinessHours}</Text>
+              </Box>
+              <Text h={23} w='100%' pt={50} fontSize={12} fontFamily="Roboto" color='#717A65' >本資訊僅供參考，請以現場營業時間、訂位狀況為主</Text>
+            </ModalBody>
+          </Box>
         </ModalContent>
       </Modal>
     </>
