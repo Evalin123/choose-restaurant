@@ -31,11 +31,19 @@ const StyledRestaurantCard = styled(Box)`
     font-size: 16px;
     line-height: 19px;
   }
+
+  @media (max-width: 480px) {
+    .restaurant-box {
+      width: 240px;
+      height: 300px;
+    }
+  }
+
 `
 
 const RestaurantCard = ({ name, img }) => {
   return (
-    <StyledRestaurantCard overflow="hidden">
+    <StyledRestaurantCard className="restaurant-box">
       <Image className="restaurant-img" src={img} alt="Food Img" />
       <Box className="restaurant-info">
         <p className="restaurant-title">

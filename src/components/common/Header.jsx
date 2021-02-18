@@ -16,7 +16,7 @@ import { ReactComponent as Logo } from "../images/logo.svg"
 const StyledPageHeader = styled.div`
   border: 1px solid rgb(235, 237, 240);
   width: 100%;
-  height: 119px;
+  height: 120px;
   padding: 0px 35px 0px 35px;
   display: flex;
   flex-direction: row;
@@ -33,8 +33,9 @@ const StyledPageHeader = styled.div`
 
   .home-btn {
     border-radius: 50%;
-    width: 77px;
-    height: 77px;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
   }
 
   p {
@@ -60,11 +61,33 @@ const StyledPageHeader = styled.div`
     width: 51px;
     height: 60px;
   }
+
+  @media (max-width: 480px) {
+    .logo-session {
+      height: 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .home-btn {
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    p {
+      font-family: Fira Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 12px;
+    }
+  }
 `
 
 const Header = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = React.useRef()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
   const history = useHistory();
 
   return (
@@ -75,7 +98,7 @@ const Header = () => {
           variant="unstyled"
           colorScheme="teal"
           aria-label="Call Sage"
-          icon={<Logo h={9} w={9} />}
+          icon={<Logo />}
           onClick={() => {
             history.push("/");
           }}

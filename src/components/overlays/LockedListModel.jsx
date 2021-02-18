@@ -10,7 +10,7 @@ import { getRestaurantDetail } from "../../utils";
 const StyledLockedCard = styled(Box)`
   width: 224px;
   height: 300px;
-  margin-left: 20px;
+  margin-right: 40px;
   margin-bottom: 40px;
 
   .img-seccion {
@@ -91,7 +91,7 @@ const LockedListModel = ({ id }) => {
           {restaurant.Name}
         </p>
       </Box>
-    </StyledLockedCard>
+    </StyledLockedCard >
   )
 }
 

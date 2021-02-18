@@ -63,7 +63,7 @@ const StyledSidebar = styled.div`
   }
 `
 
-const Sidebar = () => {
+const Sidebar = ({ isClose }) => {
   const history = useHistory();
   const UserName = localStorage.getItem("UserName");
   const UserEmail = localStorage.getItem("UserEmail");

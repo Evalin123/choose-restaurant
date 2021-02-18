@@ -52,7 +52,7 @@ const StyledHomePage = styled.div`
     flex-direction: row; 
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    overflow: scroll;
   }
 
   .btn {
@@ -65,6 +65,18 @@ const StyledHomePage = styled.div`
     font-size: 20px;
     line-height: 23px;
     color: #FFFFFF;
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 40px;
+      line-height: 90px;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 
 `
@@ -97,9 +109,9 @@ const HomePage = () => {
           <RestaurantCard mr={-20} name="亞洲料理" img="https://images.pexels.com/photos/1437590/pexels-photo-1437590.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
         </div>
         <Button
+          className="btn"
           variant="unstyled"
           _focus={{ border: 'none' }}
-          className="btn"
           onClick={handleSubmit}
         >
           今天吃什麼

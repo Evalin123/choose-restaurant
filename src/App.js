@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./components/common/Header";
 import Signup from "./pages/SignupPage";
