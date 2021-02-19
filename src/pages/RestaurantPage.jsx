@@ -20,16 +20,19 @@ const StyledRestaurantPage = styled.div`
   }
 
   .restaurant-box {
+    width: 100%;
     border-radius: 5px;
     display: flex;
   }
 
   .restaurant-img {
+    width: 70%;
     height: 480px;
     object-fit: cover;
   }
 
   .restaurant-info-box {
+    width: 30%;
     padding-left: 10px;
     border-radius: 5px;
     background: #ECECEC;

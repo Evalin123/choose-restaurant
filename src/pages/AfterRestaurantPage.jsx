@@ -28,22 +28,30 @@ const StyledAfterRestaurantPage = styled.div`
   }
 
   .restaurant-box {
+    width: 100%;
     border-radius: 5px;
     display: flex;
   }
 
   .restaurant-img {
+    width: 70%;
     height: 480px;
     object-fit: cover;
   }
 
   .restaurant-info-box {
+    width: 30%;
+    padding-left: 10px;
     border-radius: 5px;
     background: #ECECEC;
     padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   h2 {
+    width: 100%;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
@@ -55,8 +63,10 @@ const StyledAfterRestaurantPage = styled.div`
 
   .restaurant-info {
     margin-top: 40px;
+    width: 100%;
   }
   p {
+    width: 100%;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -80,6 +90,7 @@ const StyledAfterRestaurantPage = styled.div`
     display: flex;
     justify-content: space-between;
   }
+
   .finished-btn {
     width: 200px;
     height: 62px;
@@ -95,7 +106,7 @@ const StyledAfterRestaurantPage = styled.div`
     color: #CC7B4E;
   }
 
-  .btn-group Button.black-list-btn {
+  .black-list-btn {
     width: 200px;
     height: 62px;
     background: #CC7B4E;
@@ -108,6 +119,54 @@ const StyledAfterRestaurantPage = styled.div`
     font-size: 20px;
     line-height: 23px;
     color: #FFFFFF;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding-top: 50px;
+    }
+
+    .restaurant-box {
+      width: 350px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+    }
+    .restaurant-img {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .restaurant-info-box {
+      height: 250px;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 16px;
+      line-height: 19px;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 24px;
+    }
+
+    .illustration {
+      font-size: 10px;
+      line-height: 15px;
+      margin-top: 40px;
+    }
+
+    .black-list-btn {
+      width: 144px;
+    }
+
+    .finished-btn {
+      width: 144px;
+    }
+
   }
 
 `
@@ -173,9 +232,9 @@ const AfterRestaurantPage = () => {
   return (
     <StyledAfterRestaurantPage>
       <Container className="container">
-        <Box className="restaurant-box row">
-          <Image className="restaurant-img col-9" src={restaurant.Image} alt="Restaurant Img" />
-          <Box className="restaurant-info-box col-3" >
+        <Box className="restaurant-box">
+          <Image className="restaurant-img" src={restaurant.Image} alt="Restaurant Img" />
+          <Box className="restaurant-info-box" >
             <h2>{restaurant.Name}</h2>
             <div className="restaurant-info">
               <p>地址 /{restaurant.Location}</p>
@@ -205,8 +264,18 @@ const AfterRestaurantPage = () => {
           </Button>
           <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent w={634} h={476}>
-              <Image bg='#000' opacity={0.3} h={151} src={restaurant.Image} alt="Food Img" />
+            <ModalContent
+              width={{ lg: "710px", base: "292px" }}
+              height={{ lg: "480px", base: "600px" }}
+            >
+              <Image
+                bg='#000'
+                opacity={0.3}
+                height={{ lg: "150px", base: "200px" }}
+                objectFit='cover'
+                src={restaurant.Image}
+                alt="Food Img"
+              />
               <ModalCloseButton
                 borderRadius={50}
                 bg='#000'
@@ -214,32 +283,47 @@ const AfterRestaurantPage = () => {
                 variant="unstyled"
                 _focus={{ border: "none" }}
               />
-              <ModalBody w={495} h={34} mt={105} ml={10}>
-                <Text fontSize={20} fontFamily="Roboto">確定要把 <b>{restaurant.Name}</b> 加入黑名單嗎？</Text>
+              <ModalBody
+                height={{ lg: "324px", base: "340px" }}
+                display="flex"
+                flexDir={{ lg: "row", base: "column" }}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Text fontSize={20} fontFamily="Roboto">確定要把&nbsp;</Text>
+                <Text color='#CC7B4E' fontSize={20}>{restaurant.Name}</Text>
+                <Text fontSize={20}>&nbsp;加入黑名單嗎？</Text>
               </ModalBody>
-              <ModalFooter w={380} ml={10} mb={30} display="flex" alignItems="center" justifyContent="space-between">
+              <ModalFooter
+                display="flex"
+                flexDir={{ lg: "row", base: "column" }}
+                alignItems="center"
+                justifyContent="space-between"
+              >
                 <Button
                   h={62}
-                  w={150}
-                  bg='#CC7B4E'
-                  color='#fff'
+                  width={{ lg: "150px", base: "144px" }}
+                  border='3px solid #CC7B4E'
+                  bg='fff'
+                  color='#CC7B4E'
                   onClick={() => { handleBlackList(review) }}
                   variant="unstyled"
                   _focus={{ border: "none" }}
                 >
                   加入黑名單
-              </Button>
+                </Button>
                 <Button
                   h={62}
-                  w={150}
+                  width={{ lg: "150px", base: "144px" }}
                   bg='#CC7B4E'
+                  mt={{ lg: "0px", base: "20px" }}
                   color='#fff'
                   onClick={onClose}
                   variant="unstyled"
                   _focus={{ border: "none" }}
                 >
                   算了，先不要
-            </Button>
+                </Button>
               </ModalFooter>
             </ModalContent>
           </Modal>

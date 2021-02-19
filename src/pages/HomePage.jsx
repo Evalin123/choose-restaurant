@@ -52,7 +52,7 @@ const StyledHomePage = styled.div`
     flex-direction: row; 
     justify-content: center;
     align-items: center;
-    overflow: scroll;
+    overflow: auto;
   }
 
   .btn {
