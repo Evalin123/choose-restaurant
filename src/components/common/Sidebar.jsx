@@ -61,6 +61,23 @@ const StyledSidebar = styled.div`
     background-color: #E5E5E5;
     color: #717A65;
   }
+
+  @media (max-width: 480px) {
+    .side-bar {
+      padding-top: 100px;
+    }
+    .userinfo {
+      height: 80px;
+    }
+
+    .userinfo p {
+      font-size: 20px;
+    }
+
+    Button {
+      font-size: 20px;
+    }
+  }
 `
 
 const Sidebar = ({ isClose }) => {
@@ -83,7 +100,7 @@ const Sidebar = ({ isClose }) => {
   }, [UserName, UserEmail])
 
   return (
-    <StyledSidebar>
+    <StyledSidebar className="side-bar">
       {
         userName !== "" ?
           <div className="userinfo">

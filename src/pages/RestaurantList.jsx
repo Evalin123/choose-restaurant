@@ -40,6 +40,31 @@ const StyledRestaurantList = styled.div`
     display: inline-block;
     line-height: 5%;
   }
+
+  @media (max-width: 480px) {
+    .container {
+      padding-top: 60px;
+    }
+
+    h2 {
+      width: 100%;
+      height: 40px;
+      font-size: 20px;
+    }
+    .description {
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .restaurant-list {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
 `
 
 const RestaurantList = () => {
@@ -57,7 +82,7 @@ const RestaurantList = () => {
 
   return (
     <StyledRestaurantList>
-      <ListContainer>
+      <ListContainer className="container">
         <h2 align="center">會再二訪</h2>
         <p align="center" className="description">下次還有機會抽到！</p>
         <div className="restaurant-list">

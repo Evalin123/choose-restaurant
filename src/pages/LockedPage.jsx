@@ -35,11 +35,37 @@ const StyledRestaurantList = styled.div`
     width: 100%;
     height: 100%;
     margin-top: 5%;
+    padding-left: 28px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     line-height: 5%;
   }
+
+  @media (max-width: 480px) {
+    .container {
+      padding-top: 60px;
+    }
+
+    h2 {
+      width: 100%;
+      height: 40px;
+      font-size: 20px;
+    }
+    .description {
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .restaurant-list {
+      height: 100%;
+      width: 100%;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
 `
 
 const LockedPage = () => {
@@ -57,7 +83,7 @@ const LockedPage = () => {
 
   return (
     <StyledRestaurantList>
-      <ListContainer>
+      <ListContainer className="container">
         <h2 align="center">未解鎖餐廳</h2>
         <p align="center" className="description">之後和朋友一起來造訪吧！</p>
         <div className="restaurant-list">

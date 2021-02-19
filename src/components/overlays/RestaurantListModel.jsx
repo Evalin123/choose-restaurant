@@ -42,6 +42,13 @@ const StyledBox = styled(Box)`
     line-height: 19px;
     color: #131313;
   }
+
+  @media (max-width: 480px) {
+    .button {
+      width: 224px;
+      height: 300px;
+    }
+  }
 `
 
 const RestaurantListModel = ({ id }) => {
@@ -71,6 +78,7 @@ const RestaurantListModel = ({ id }) => {
   return (
     <>
       <Button
+        className="button"
         onClick={onOpen}
         variant="unstyled"
         h={296}
@@ -79,7 +87,7 @@ const RestaurantListModel = ({ id }) => {
         mt={50}
         _focus={{ border: "none" }}
       >
-        <StyledBox boxShadow="lg">
+        <StyledBox>
           <Image className="restaurant-img" src={restaurant.Image} alt="Food Img" />
           <Box className="restaurant-info">
             <p className="restaurant-title">
@@ -90,13 +98,31 @@ const RestaurantListModel = ({ id }) => {
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent h="50%">
-          <Box h={150}>
-            <Image objectFit="cover" filter="contrast(25%)" h={150} w='100%' src={restaurant.Image} alt="Food Img" />
+        <ModalContent
+          width={{ lg: "710px", base: "292px" }}
+          height={{ lg: "480px", base: "560px" }}
+        >
+          <Box height={{ lg: "150px", base: "200px" }}>
+            <Image
+              objectFit="cover"
+              filter="contrast(25%)"
+              height={{ lg: "150px", base: "200px" }}
+              w='100%'
+              src={restaurant.Image}
+              alt="Food Img"
+            />
           </Box>
           <ModalCloseButton borderRadius={50} bg='#000' color='#FFF' _focus={{ border: "none" }} />
-          <Box h={450} pl="10%" pr="10%" display="flex" flexDirection="column" alignItems="center">
-            <ModalHeader align="left" w='100%' pt={30}>
+          <Box
+            height={{ lg: "450px", base: "340px" }}
+            pl="10%"
+            pr="10%"
+            pt={30}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          >
+            <ModalHeader align="left" w='100%'>
               {restaurant.Name}
             </ModalHeader>
             <ModalBody w='100%' >

@@ -54,6 +54,13 @@ const StyledLockedCard = styled(Box)`
     font-size: 16px;
     line-height: 19px;
   }
+
+  @media (max-width: 480px) {
+    width: 224px;
+    height: 300px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+  }
 `
 
 const LockedListModel = ({ id }) => {
