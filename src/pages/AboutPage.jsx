@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import {
   Avatar,
+  Text
 } from "@chakra-ui/react";
+import LogoImg from "../components/images/logo.svg";
 
 const StyledAboutPage = styled.div`
   width: 100%;
@@ -11,15 +13,13 @@ const StyledAboutPage = styled.div`
 
   .container {
     padding-top: 100px;
-    padding-left: 10%;
-    padding-right: 10%;
     padding-bottom: 80px;
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row; 
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    align-items: start;
   }
 
   .logo-session {
@@ -69,15 +69,14 @@ const StyledAboutPage = styled.div`
   }
 
   .creater-info {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
   }
 
   .creater-avatar {
     width: 55px;
     height: 55px;
+    margin-right: 24px;
   }
 
   .creater-introduce {
@@ -105,6 +104,92 @@ const StyledAboutPage = styled.div`
     font-size: 20px;
     line-height: 37px;
   }
+
+  @media (max-width: 480px) {
+    .container {
+      padding-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-session {
+      height: 50%;
+      width: 50%;
+    }
+
+    .logo {
+      height: 100%;
+      width: 100%;
+    }
+
+    .about-session {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .title {
+      font-size: 30px;
+      line-height: 72px;
+      height: 60px;
+    }
+
+    .content {
+      font-size: 16px;
+      line-height: 24px;
+      height: 216px;
+    }
+
+    .creater-session {
+      width: 100%;
+      height: 120px;
+      margin-top: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .creater-info {
+      width: 100%;
+      display: flex;
+    }
+    .creater-info.ui-info {
+      margin-top: 20px;
+    }
+
+    .creater-avatar {
+      margin-right: 10px;
+      width: 50px;
+      height: 50px;
+    }
+
+    .creater-introduce {
+      width: 220px;
+      height: 50px;
+      padding-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .creater-name {
+      height: 20px;
+      width: 100%;
+      font-size: 16px;
+      line-height: 25px;
+    }
+
+    .creater-character {
+      height: 20px;
+      width: 100%;
+      font-size: 16px;
+      line-height: 25px;
+    }
+  }
 `
 
 const AboutPage = () => {
@@ -112,7 +197,7 @@ const AboutPage = () => {
     <StyledAboutPage>
       <div className="container">
         <div className="logo-session">
-          <Avatar className="logo" src="https://bit.ly/broken-link" />
+          <Avatar className="logo" src={LogoImg} />
         </div>
         <div className="about-session">
           <h1 className="title">關於今天吃什麼？</h1>
@@ -124,15 +209,15 @@ const AboutPage = () => {
             <div className="creater-info">
               <Avatar className="creater-avatar" src="https://bit.ly/broken-link" />
               <div className="creater-introduce">
-                <p align="left" className="creater-name">Eva Lin</p>
-                <p align="left" className="creater-character">網站創辦人、網站工程師</p>
+                <Text align="left" className="creater-name">Eva Lin</Text>
+                <Text align="left" className="creater-character">網站創辦人、網站工程師</Text>
               </div>
             </div>
-            <div className="creater-info">
+            <div className="creater-info ui-info">
               <Avatar className="creater-avatar" src="https://bit.ly/broken-link" />
               <div className="creater-introduce">
-                <p align="left" className="creater-name">Anya Lin</p>
-                <p align="left" className="creater-character">UI/UX設計師</p>
+                <Text align="left" className="creater-name">Anya Lin</Text>
+                <Text align="left" className="creater-character">UI/UX設計師</Text>
               </div>
             </div>
           </div>

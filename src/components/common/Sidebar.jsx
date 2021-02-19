@@ -71,20 +71,19 @@ const StyledSidebar = styled.div`
     }
 
     .userinfo p {
-      font-size: 20px;
+      font-size: 22px;
     }
 
     Button {
-      font-size: 20px;
+      font-size: 22px;
     }
   }
 `
 
-const Sidebar = ({ isClose }) => {
+const Sidebar = () => {
   const history = useHistory();
   const UserName = localStorage.getItem("UserName");
   const UserEmail = localStorage.getItem("UserEmail");
-  console.log("User: ", UserName);
   const [userName, setUserName] = useState("")
   const [userEmail, setUserEmail] = useState("")
 
@@ -122,7 +121,15 @@ const Sidebar = ({ isClose }) => {
         variant="ghost"
         borderRadius="0px"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
-        onClick={() => { history.push("/restaurantList") }}
+        onClick={() => {
+          const userName = localStorage.getItem("UserName");
+          if (userName === null) {
+            history.push("/signin")
+          }
+          else {
+            history.push("/restaurantList")
+          }
+        }}
       >
         造訪過的餐廳
       </Button>
@@ -130,12 +137,28 @@ const Sidebar = ({ isClose }) => {
         variant="ghost"
         borderRadius="0px"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
-        onClick={() => { history.push("/lockedPage") }}
+        onClick={() => {
+          const userName = localStorage.getItem("UserName");
+          if (userName === null) {
+            history.push("/signin")
+          }
+          else {
+            history.push("/lockedPage")
+          }
+        }}
       >
         未解鎖的餐廳
       </Button>
       <Button
-        onClick={() => { history.push("/blackList") }}
+        onClick={() => {
+          const userName = localStorage.getItem("UserName");
+          if (userName === null) {
+            history.push("/signin")
+          }
+          else {
+            history.push("/blackList")
+          }
+        }}
         variant="ghost"
         borderRadius="0px"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
@@ -158,6 +181,8 @@ const Sidebar = ({ isClose }) => {
           onClick={() => {
             localStorage.removeItem("UserName");
             localStorage.removeItem("UserId");
+            localStorage.removeItem("UserEmail");
+            localStorage.removeItem("RestaurantId");
             history.push("/signin");
           }}
         >

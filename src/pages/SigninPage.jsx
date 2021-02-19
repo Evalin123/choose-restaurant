@@ -67,6 +67,7 @@ const StyledSignup = styled.div`
     line-height: 37px;
     background: #E5E5E5;
     border-radius: 5px; 
+    color: #6B6B6B;
   }
 
   .psd-input-group {
@@ -82,9 +83,10 @@ const StyledSignup = styled.div`
     font-family: Roboto;
     font-size: 25px;
     line-height: 37px;
+    color: #6B6B6B;
   }
   .psd-eyes-btn {
-    top: 13px;
+    top: 12px;
   }
 
   .submit-btn {
@@ -97,6 +99,51 @@ const StyledSignup = styled.div`
     font-size: 20px;
     line-height: 23px;
     color: #FFFFFF;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding-top: 60px;
+    }
+
+    .input-section {
+      width: 100%;
+    }
+
+    .sign-btn-group {
+      width: 90%;
+    }
+
+    .sign-btn {
+      width: 110px;
+      font-size: 24px;
+    }
+
+    .account-input {
+      width: 100%;
+      height: 54px;
+      margin-top: 40px;
+      font-size: 22px;
+    }
+
+    .psd-input-group {
+      width: 100%;
+      height: 54px;
+      margin-top: 20px;
+    }
+    .psd-input-group input {
+      font-size: 22px;
+    }
+    .psd-eyes-btn {
+      top: 10px;
+    }
+
+    .submit-btn {
+      width: 110px;
+      height: 62px;
+      margin-top: 60px;
+      font-size: 22px;
+    }
   }
 
 `;
