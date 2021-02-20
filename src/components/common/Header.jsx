@@ -17,7 +17,7 @@ const StyledPageHeader = styled.div`
   border: 1px solid rgb(235, 237, 240);
   width: 100%;
   height: 120px;
-  padding: 0px 35px 0px 35px;
+  padding: 0px 36px 0px 36px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -58,11 +58,14 @@ const StyledPageHeader = styled.div`
   }
 
   .hamberger-btn {
-    width: 51px;
+    width: 50px;
     height: 60px;
   }
 
   @media (max-width: 480px) {
+    height: 80px;
+    padding: 0px 16px 0px 16px;
+
     .logo-session {
       height: 44px;
       display: flex;
@@ -71,8 +74,10 @@ const StyledPageHeader = styled.div`
     }
 
     .home-btn {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      margin-right: 5px;
+      margin-right: 10px;
     }
 
     p {
@@ -81,6 +86,11 @@ const StyledPageHeader = styled.div`
       font-weight: normal;
       font-size: 16px;
       line-height: 12px;
+    }
+
+    .hamberger-btn {
+      width: 40px;
+      height: 40px;
     }
   }
 `
@@ -110,7 +120,7 @@ const Header = () => {
       <IconButton
         className="hamberger-btn"
         variant="unstyled"
-        icon={<HamburgerIcon w={9} h={9} color="#131313;" />}
+        icon={<HamburgerIcon />}
         ref={btnRef} colorScheme="teal"
         onClick={onOpen}
         _focus={{ borderRadius: "none" }}

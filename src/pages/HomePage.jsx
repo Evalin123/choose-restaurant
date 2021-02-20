@@ -50,8 +50,6 @@ const StyledHomePage = styled.div`
     margin-bottom: 40px;
     display: flex;
     flex-direction: row; 
-    justify-content: center;
-    align-items: center;
     overflow: auto;
   }
 

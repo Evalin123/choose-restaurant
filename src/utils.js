@@ -14,7 +14,7 @@ export const signup = async (user) => {
   };
   const records = await axios.post('https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Users', userData, config);
   localStorage.setItem("UserName", records.data.fields.UserName);
-  localStorage.setItem("UserEmail", records.data.fields.UserEmail);
+  localStorage.setItem("UserEmail", records.data.fields.Email);
   localStorage.setItem("UserId", records.data.id);
   return records.data.fields;
 };
@@ -30,6 +30,7 @@ export const signin = async (user) => {
   };
   const { data } = await axios.get(`https://api.airtable.com/v0/appF72A7qd3ePlXLJ/Users?filterByFormula=AND(%7BUserName%7D%3D'${userData.UserName}'%2C%7BPassword%7D%3D'${userData.Password}')`, config);
   let record = data.records[0];
+  console.log(data);
   localStorage.setItem("UserName", record.fields.UserName);
   localStorage.setItem("UserEmail", record.fields.Email);
   localStorage.setItem("UserId", record.id);
@@ -88,7 +89,7 @@ export const isEaten = async (review) => {
   return data.fields;
 }
 
-export const getEatenRestaurant = async () => {
+export const getRestaurantList = async () => {
   const UserName = localStorage.getItem("UserName");
   const Authorization = localStorage.getItem("Authorization");
   const config = {

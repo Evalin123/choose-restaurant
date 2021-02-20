@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import RestaurantListModel from "../components/overlays/RestaurantListModel";
 import ListContainer from "../components/common/ListContainer";
-import { getEatenRestaurant } from "../utils";
+import { getRestaurantList } from "../utils";
 
 const StyledRestaurantList = styled.div`
   width: 100%;
@@ -70,7 +70,7 @@ const StyledRestaurantList = styled.div`
 const RestaurantList = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   useEffect(() => {
-    getEatenRestaurant()
+    getRestaurantList()
       .then(res => {
         setRestaurantList(res)
         return res;

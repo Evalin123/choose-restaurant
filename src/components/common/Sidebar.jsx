@@ -77,6 +77,10 @@ const StyledSidebar = styled.div`
     Button {
       font-size: 22px;
     }
+    Button:hover {
+      background-color: none;
+      color: none;
+    }
   }
 `
 
