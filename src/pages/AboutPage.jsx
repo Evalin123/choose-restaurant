@@ -5,6 +5,8 @@ import {
   Text
 } from "@chakra-ui/react";
 import LogoImg from "../components/images/logo.svg";
+import AnyaImg from "../components/images/anya-avatar.jpg";
+import EvaImg from "../components/images/eva-img.jpg";
 
 const StyledAboutPage = styled.div`
   width: 100%;
@@ -111,6 +113,8 @@ const StyledAboutPage = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-right: 40px;
+      padding-left: 40px;
     }
 
     .logo-session {
@@ -207,14 +211,14 @@ const AboutPage = () => {
           </p>
           <div className="creater-session">
             <div className="creater-info">
-              <Avatar className="creater-avatar" src="https://bit.ly/broken-link" />
+              <Avatar className="creater-avatar" src={EvaImg} />
               <div className="creater-introduce">
                 <Text align="left" className="creater-name">Eva Lin</Text>
                 <Text align="left" className="creater-character">網站創辦人、網站工程師</Text>
               </div>
             </div>
             <div className="creater-info ui-info">
-              <Avatar className="creater-avatar" src="https://bit.ly/broken-link" />
+              <Avatar className="creater-avatar" src={AnyaImg} />
               <div className="creater-introduce">
                 <Text align="left" className="creater-name">Anya Lin</Text>
                 <Text align="left" className="creater-character">UI/UX設計師</Text>
