@@ -132,3 +132,12 @@ export const getLockedList = async () => {
   let lockedRestaurantsIds = allRestaurantsIds.filter(e => allReviewsRestaurantIds.indexOf(e) < 0);
   return lockedRestaurantsIds;
 }
+
+export const getChartData = async () => {
+  const resList = (await getRestaurantList()).length
+  const blackList = (await getBlackList()).length
+  const lockList = (await getLockedList()).length
+  const chartData = [resList, blackList, lockList]
+
+  return chartData;
+}

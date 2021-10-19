@@ -12,6 +12,7 @@ import RestaurantList from "./pages/RestaurantList";
 import AboutPage from "./pages/AboutPage";
 import BlackListPage from "./pages/BlackListPage";
 import LockedPage from "./pages/LockedPage";
+import ChartPage from "./pages/ChartPage";
 
 export default function App() {
   localStorage.setItem("Authorization", "Bearer keyAtYdf2pfxnig7B");
@@ -47,6 +48,9 @@ export default function App() {
             </Route>
             <Route path="/lockedPage">
               <LockedPage />
+            </Route>
+            <Route path='/chartPage'>
+              <ChartPage />
             </Route>
           </Switch>
         </BrowserRouter>
