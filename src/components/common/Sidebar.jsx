@@ -170,6 +170,22 @@ const Sidebar = () => {
         黑名單餐廳
       </Button>
       <Button
+        onClick={() => {
+          const userName = localStorage.getItem("UserName");
+          if (userName === null) {
+            history.push("/signin")
+          }
+          else {
+            history.push("/chartPage")
+          }
+        }}
+        variant="ghost"
+        borderRadius="0px"
+        _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}
+      >
+        餐廳比例圖
+      </Button>
+      <Button
         variant="ghost"
         borderRadius="0px"
         _focus={{ bg: "#CC7B4E", borderRadius: "0px" }}

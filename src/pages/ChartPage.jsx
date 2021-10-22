@@ -13,6 +13,33 @@ height: 100%;
   .container {
     padding-top: 60px;
   }
+
+  h2 {
+    width: 480px;
+    height: 50px;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 37px;
+    letter-spacing: 0.2em;
+  }
+
+  .description {
+    width: 480px;
+    height: 30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 37px;
+    letter-spacing: 0.2em;
+    color: #696969;
+  }
+
+  .chart {
+    height: 500px;
+    width: 500px;
+    padding-top: 20px;
+  }
 `
 
 const ChartPage = () => {
@@ -50,7 +77,9 @@ const ChartPage = () => {
   return (
     <StyledChartPage>
       <Container className="container">
-        <div style={{height:'500px', width:'500px'}}>
+        <h2 align="center">餐廳比例圖</h2>
+        <p align="center" className="description">還有多少沒去過呢?</p>
+        <div className="chart">
           <Pie data={pieChart} options={{responsive: true}} />
         </div>
       </Container>
